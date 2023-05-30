@@ -7,6 +7,8 @@ export function EcommerceProvider({children}){
     const [productsInCart,setProductsInCart]=useState(0);
     /* open or close categories in mobile */
     const [isCategoriesOpen,setIsCategoriesOpen]=useState(true)
+    /* add to cart functionality */
+    const [cart,setCart]=useState([])
     /* get products of API */
     
     const [products,setProducts]=useState([])
@@ -34,19 +36,18 @@ export function EcommerceProvider({children}){
         const [logged,setlogged]=useState(true)
         function checkLogin(props){
             if (logged){
-                console.log('hola')
                 addToCart(props)
             } else{
                 console.log('logeate')
             }
         }
-        /* add to cart functionality */
-        const [cart,setCart]=useState([])
+
         function addToCart(props){
             setCart([...cart,props])
             console.log(cart)
         }
-     
+        
+
     return(
         <Ecommerce.Provider
             value={{
@@ -63,6 +64,7 @@ export function EcommerceProvider({children}){
                 searchByCategory,
                 checkLogin,
                 cart,
+                setCart,
                 isCartOpen,
                 setIsCartOpen,
             }}

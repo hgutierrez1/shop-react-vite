@@ -7,14 +7,14 @@ function MainPage(){
     const renderView=()=>{
         if(context.productsToShow?.length>0){
             return(
-                context.productsToShow?.map(product=>(
-                    ( <CardProduct
+                context.productsToShow?.map((product)=>(
+                    <CardProduct
                          key={product.id}
                          img={product.images[0]}
                          price={product.price}
                          title={product.title}
                          category={product.category.name}
-                     />)
+                     />
                  ))
             )
           }else{
