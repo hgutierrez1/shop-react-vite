@@ -5,22 +5,24 @@ import { v4 as uuidv4 } from 'uuid'
 
 
 const active='underline undeline-offset-4'
-const GenerateNavbar=(array)=>
-    array.map((item)=>{
+function GenerateNavbar(array){
+    const context=useContext(Ecommerce)  
+  return  array.map((item)=>{
      let item2
         if (item.includes(" ")){
             item2=item.slice(0,item.indexOf(" "))+'-'+item.slice(item.indexOf(" ")+1,item.length)
         } else{
             item2=`/${item}`
         }
+   
     return(<li key={uuidv4()}>
-        <NavLink  to={item2.toLowerCase()} className={({isActive})=>isActive?active:""}>
+        <NavLink  to={item2.toLowerCase()} className={({isActive})=>isActive?active:""} onClick={()=>context.searchByCategory(item)}>
             {item}
         </NavLink>
     </li>)
     }
     )
-    
+}  
 function Navbar(){
     const categories=['Clothes','Electronics','Furniture','Toys','Others']
     const otherpages=['My Orders','My Account','Sign In']
@@ -38,17 +40,17 @@ function Navbar(){
                 <p>0</p>
             </div>
         </div>
-        <nav className={`${context.isCategoriesOpen?'hidden':'flex'} h-auto w-4/5 flex-col gap-6 absolute top-16 z-50 border-r-2 border-b-2 rounded-br-lg bg-white pt-4 pb-6 px-6 max-w-xs sm:flex-row sm:max-w-none sm:top-0 sm:w-11/12 sm:py-4 sm:justify-between sm:px-1 sm:border-0 sm:gap-0  sm:flex`}>
+        <nav className={`${context.isCategoriesOpen?'hidden':'flex'}  h-auto w-4/5 flex-col gap-6 absolute top-16 z-50 border-r-2 border-b-2 rounded-br-lg bg-white pt-4 pb-6 px-6 max-w-xs sm:flex-row sm:max-w-none sm:top-0 sm:w-11/12 sm:py-4 sm:justify-between sm:px-1 sm:border-0 sm:gap-0  sm:flex`}>
 
 
             <ul className="list-none flex flex-col justify-evenly sm:flex-row sm:justify-evenly sm:w-auto sm:gap-2">
                 <li className="font-bold">
-                    <NavLink  to="/" >
+                    <NavLink  to="/" onClick={()=>context.searchByCategory('')}>
                         LOGO
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink  to="/" className={({isActive})=>isActive?active:""}>
+                    <NavLink  to="/" className={({isActive})=>isActive?active:""} onClick={()=>context.searchByCategory('')}>
                         All
                     </NavLink>
                 </li>
