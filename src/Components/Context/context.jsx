@@ -7,11 +7,6 @@ export function EcommerceProvider({children}){
     const [productsInCart,setProductsInCart]=useState(0);
     /* open or close categories in mobile */
     const [isCategoriesOpen,setIsCategoriesOpen]=useState(true)
-    
-    const toggleCategories=()=>{
-        setIsCategoriesOpen(!isCategoriesOpen)
-    }
-
     /* get products of API */
     
     const [products,setProducts]=useState([])
@@ -29,21 +24,29 @@ export function EcommerceProvider({children}){
         function searchByCategory(valcategory){
             setCategory(valcategory)
         }
-
+        /* open or close cart menu */
+        const [isCartOpen,setIsCartOpen]=useState(true)
      /* choose products to show */
         const var1=products.filter(product=>(product.category.name.includes(category)))
 
         const productsToShow=(var1.filter((product)=>(product.title.toLowerCase().includes(searchTerm.toLowerCase()))))
-        
+        /* login functionality */
+        const [logged,setlogged]=useState(true)
+        function checkLogin(props){
+            if (logged){
+                console.log('hola')
+                addToCart(props)
+            } else{
+                console.log('logeate')
+            }
+        }
+        /* add to cart functionality */
+        const [cart,setCart]=useState([])
+        function addToCart(props){
+            setCart([...cart,props])
+            console.log(cart)
+        }
      
-      
-
-           
-
-
-
-
-
     return(
         <Ecommerce.Provider
             value={{
@@ -51,14 +54,17 @@ export function EcommerceProvider({children}){
                 setProductsInCart,
                 isCategoriesOpen,
                 setIsCategoriesOpen,
-                toggleCategories,
                 products,
                 setProducts,
                 productsToShow,
                 setSearchTerm,
                 category,
                 setCategory,
-                searchByCategory
+                searchByCategory,
+                checkLogin,
+                cart,
+                isCartOpen,
+                setIsCartOpen,
             }}
         >
 

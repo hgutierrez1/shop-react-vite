@@ -4,9 +4,7 @@ import CardProduct from "../../Components/CardProduct/cardproduct"
 
 function MainPage(){
     const context=useContext(Ecommerce)
-
     const renderView=()=>{
-        debugger
         if(context.productsToShow?.length>0){
             return(
                 context.productsToShow?.map(product=>(
