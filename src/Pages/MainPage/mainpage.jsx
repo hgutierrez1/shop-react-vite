@@ -2,6 +2,8 @@ import { useContext } from "react"
 import { Ecommerce } from "../../Components/Context/context"
 import CardProduct from "../../Components/CardProduct/cardproduct"
 import ProductDetailsCard from "../../Components/ProductDetailsCard/productdetailcard"
+import BlockPage from '../../Components/BlockPage/blockpage'
+import LoginCheck from '../../Components/LoginCheck/logincheck'
 
 
 function MainPage(){
@@ -29,19 +31,22 @@ function MainPage(){
 
     return(
         <>
-            <main className="absolute top-20 flex flex-col items-center w-full h-full">
+            <main className="absolute top-20 flex flex-col items-center w-full h-full overflow-hidden">
                 <div>
                     <h1 className="font-bold text-3xl">PLACEHOLDER</h1>
                     <p>Search something!</p>
                     <input className="border-2 rounded-lg p-2 mt-2 mb-6" type="text" placeholder="Introduce one or more key terms"
                     onChange={(e)=>context.setSearchTerm(e.target.value)}/>
                 </div>
-                <div className="grid gap-4 justify-items-center lg:grid-cols-3 xl:grid-cols-4 w-4/5 min-[500px]:grid-cols-2">
+                <div className="grid gap-4 justify-items-center lg:grid-cols-3 xl:grid-cols-4 w-4/5 min-[500px]:grid-cols-2 overflow-y-scroll">
                     {renderView()}
                 </div>
             </main>
             {
                 context.productDetailed?<ProductDetailsCard/>:''
+            }
+            {
+                context.signIn?<BlockPage><LoginCheck/></BlockPage>:''
             }
         </>
     )

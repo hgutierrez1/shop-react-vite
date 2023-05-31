@@ -8,8 +8,8 @@ import SignIn from '../Pages/SignIn/signin'
 import SignUp from '../Pages/SignUp/signup'
 import ShoppingCart from '../Components/ShoppingCart/shoppingcart'
 import NotFound from '../Pages/NotFound/notfound'
-
 import './App.css'
+
 
 function Routes(){
 
@@ -27,6 +27,7 @@ function Routes(){
 
   return routes
 }
+
 
 function App() {
   

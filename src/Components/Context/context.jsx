@@ -9,6 +9,8 @@ export function EcommerceProvider({children}){
     const [isCategoriesOpen,setIsCategoriesOpen]=useState(true)
     /* add to cart functionality */
     const [cart,setCart]=useState([])
+        /* singin blockade functionality */
+    const [signIn,setSignIn]=useState(false)
     /* get products of API */
     
     const [products,setProducts]=useState([])
@@ -33,13 +35,14 @@ export function EcommerceProvider({children}){
 
         const productsToShow=(var1.filter((product)=>(product.title.toLowerCase().includes(searchTerm.toLowerCase()))))
         /* login functionality */
-        const [logged,setlogged]=useState(true)
+        const [logged,setlogged]=useState(false)
         function checkLogin(e,props){
             e.stopPropagation()
             if (logged){
                 addToCart(props)
             } else{
-                console.log('logeate')
+                setSignIn(true)
+                console.log('block working')
             }
         }
 
@@ -54,6 +57,7 @@ export function EcommerceProvider({children}){
         function openProductDetail(index){
             setProductDetailed(productsToShow[index])
             setIsProductDetailOpen(false)
+
     }
     return(
         <Ecommerce.Provider
@@ -78,6 +82,8 @@ export function EcommerceProvider({children}){
                 productDetailed,
                 isProductDetailOpen,
                 setIsProductDetailOpen,
+                signIn,
+                setSignIn
             }}
         >
 
