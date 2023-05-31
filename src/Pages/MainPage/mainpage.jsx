@@ -1,15 +1,18 @@
 import { useContext } from "react"
 import { Ecommerce } from "../../Components/Context/context"
 import CardProduct from "../../Components/CardProduct/cardproduct"
+import ProductDetailsCard from "../../Components/ProductDetailsCard/productdetailcard"
+
 
 function MainPage(){
     const context=useContext(Ecommerce)
     const renderView=()=>{
         if(context.productsToShow?.length>0){
             return(
-                context.productsToShow?.map((product)=>(
+                context.productsToShow?.map((product,index)=>(
                     <CardProduct
                          key={product.id}
+                         index={index}
                          img={product.images[0]}
                          price={product.price}
                          title={product.title}
@@ -25,6 +28,7 @@ function MainPage(){
       }
 
     return(
+        <>
             <main className="absolute top-20 flex flex-col items-center w-full h-full">
                 <div>
                     <h1 className="font-bold text-3xl">PLACEHOLDER</h1>
@@ -36,6 +40,10 @@ function MainPage(){
                     {renderView()}
                 </div>
             </main>
+            {
+                context.productDetailed?<ProductDetailsCard/>:''
+            }
+        </>
     )
 }
 

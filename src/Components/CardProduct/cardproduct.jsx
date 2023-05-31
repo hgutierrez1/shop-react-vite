@@ -10,12 +10,12 @@ function CardProduct({
 }){
     const context=useContext(Ecommerce) 
     return(
-        <div className="rounded-lg border-2">
+        <div className="rounded-lg border-2" onClick={()=>context.openProductDetail(index)}>
             <figure className="w-full relative">
                 <img className="rounded-t-lg" src={img} alt={title} />
                 <span className="bg-white/50 rounded-lg absolute bottom-0 left-0 p-2 ml-2 mb-2">{category}</span>
-                <button className="absolute top-0 right-0 bg-white rounded-full p-2 mt-2 mr-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" onClick={()=>context.checkLogin({img,price,title,index})}>
+                <button className="absolute top-0 right-0 bg-white rounded-full p-2 mt-2 mr-2" onClick={(e)=>context.checkLogin(e,{img,price,title,index})}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
                 </button>

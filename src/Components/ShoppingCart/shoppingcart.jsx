@@ -36,9 +36,9 @@ function Shoppingcart(){
       }
     
     return(
-        <aside className={`${context.isCartOpen?'hidden':'flex'} bg-white absolute w-full max-h-screen p-6 max-w-md gap-4 flex-col top-14 -right-px rounded-bl-lg`}>
+        <aside className={`${context.isCartOpen?'hidden':'flex'} bg-white absolute w-full max-h-[90vh] p-6 max-w-md gap-4 flex-col top-14 -right-px rounded-bl-lg`}>
             <h2 className="font-bold text-2xl py-4 self-center">Shopping Cart</h2>
-            <div className="w-full h-auto flex flex-col py-2">
+            <div className="w-full h-auto flex flex-col py-2 overflow-y-scroll">
                 {
                   renderView()
                 }
