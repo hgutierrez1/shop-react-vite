@@ -43,6 +43,10 @@ function Shoppingcart(){
                   renderView()
                 }
             </div>
+            <div className="flex justify-between">
+              <span className="font-thin text-xl">TOTAL</span>
+              <span className="font-bold text-xl pr-2">${context.totalPrice()}</span>
+            </div>
             <button className="w-4/5 bg-black border-2 border-black rounded-lg text-white py-2 mt-6 self-center justify-end">
                 Checkout
             </button>

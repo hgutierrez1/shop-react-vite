@@ -9,6 +9,11 @@ export function EcommerceProvider({children}){
     const [isCategoriesOpen,setIsCategoriesOpen]=useState(true)
     /* add to cart functionality */
     const [cart,setCart]=useState([])
+    /* total prices from cart */
+    function totalPrice(){
+        const total=cart.reduce((a,b)=>a+b.price,0)
+        return total
+    }
         /* singin blockade functionality */
     const [signIn,setSignIn]=useState(false)
     /* add new user functionality */
@@ -109,7 +114,9 @@ export function EcommerceProvider({children}){
                 checker,
                 setChecker,
                 pmatch,
-                setPmatch
+                setPmatch,
+                totalPrice,
+
             }}
         >
 
