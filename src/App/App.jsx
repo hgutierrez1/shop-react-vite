@@ -8,6 +8,8 @@ import SignIn from '../Pages/SignIn/signin'
 import SignUp from '../Pages/SignUp/signup'
 import ShoppingCart from '../Components/ShoppingCart/shoppingcart'
 import NotFound from '../Pages/NotFound/notfound'
+import BlockPage from '../Components/BlockPage/blockpage'
+import LoginCheck from '../Components/LoginCheck/logincheck'
 import './App.css'
 
 
@@ -33,13 +35,19 @@ function App() {
   
   
   return (
+    
     <EcommerceProvider>
         <BrowserRouter>
         <Routes/>
         <Navbar/>
         <ShoppingCart/>
+          <BlockPage> 
+            <LoginCheck/>
+          </BlockPage>
       </BrowserRouter>
     </EcommerceProvider>
+            
+
   )
 }
 

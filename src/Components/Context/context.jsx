@@ -11,6 +11,19 @@ export function EcommerceProvider({children}){
     const [cart,setCart]=useState([])
         /* singin blockade functionality */
     const [signIn,setSignIn]=useState(false)
+    /* add new user functionality */
+    const [users,setUsers]=useState(()=>{
+        return JSON.parse(localStorage.getItem('users')) || []
+    })
+    
+
+    function addNewUser(newuser){
+        users.push(newuser)
+        localStorage.setItem('users',JSON.stringify(users))
+    }
+    const[checker,setChecker]=useState(false)
+    const[pmatch,setPmatch]=useState(true)
+
     /* get products of API */
     
     const [products,setProducts]=useState([])
@@ -35,7 +48,7 @@ export function EcommerceProvider({children}){
 
         const productsToShow=(var1.filter((product)=>(product.title.toLowerCase().includes(searchTerm.toLowerCase()))))
         /* login functionality */
-        const [logged,setlogged]=useState(false)
+        const [logged,setlogged]=useState(true)
         function checkLogin(e,props){
             e.stopPropagation()
             if (logged){
@@ -83,7 +96,15 @@ export function EcommerceProvider({children}){
                 isProductDetailOpen,
                 setIsProductDetailOpen,
                 signIn,
-                setSignIn
+                setSignIn,
+                logged,
+                setlogged,
+                addNewUser,
+                users,
+                checker,
+                setChecker,
+                pmatch,
+                setPmatch
             }}
         >
 

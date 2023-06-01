@@ -2,8 +2,8 @@ import { useContext } from "react"
 import { Ecommerce } from "../../Components/Context/context"
 import CardProduct from "../../Components/CardProduct/cardproduct"
 import ProductDetailsCard from "../../Components/ProductDetailsCard/productdetailcard"
-import BlockPage from '../../Components/BlockPage/blockpage'
-import LoginCheck from '../../Components/LoginCheck/logincheck'
+
+
 
 
 function MainPage(){
@@ -44,9 +44,6 @@ function MainPage(){
             </main>
             {
                 context.productDetailed?<ProductDetailsCard/>:''
-            }
-            {
-                context.signIn?<BlockPage><LoginCheck/></BlockPage>:''
             }
         </>
     )

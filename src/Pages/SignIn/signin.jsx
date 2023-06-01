@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom"
+import { useContext } from "react"
+import { Ecommerce } from "../../Components/Context/context"
+
+function test(e){
+  e.preventDefault()
+  console.log('working usercontext')
+}
 
 function SignIn(){
+  const context=useContext(Ecommerce)
     return(
         <>
         <div className="grid place-content-center w-screen h-screen gap-6">
@@ -14,7 +22,12 @@ function SignIn(){
                     <label className="text-lg font-medium" htmlFor="size_2">Password</label>
                     <input className="border-2 p-4 rounded-lg w-80 my-4" type="text" name="size" id="size_2" placeholder="Password" required />
                   </p>
-                  <span className="pt-10 inline-block">Don't have an account?</span><NavLink className="hover:underline"to='/sign-up'> Sign Up</NavLink>
+                  <div className="flex flex-col">
+                    <button type="submit" className="bg-black text-white p-4 rounded-lg">Access</button>
+                    <div className="flex items-center pt-5 gap-2">
+                        <span className="inline-block">Don't have an account?</span><NavLink className="hover:underline"to='/sign-up'> Sign Up</NavLink> 
+                    </div>
+                  </div>
 
                   
             </form>
