@@ -18,6 +18,7 @@ function SignUp(){
     newuser.orders=[]
     newuser.id=uuidv4()
     context.addNewUser(newuser)
+    window.location.assign("/sign-in")
   }
 
   function pchecker(){

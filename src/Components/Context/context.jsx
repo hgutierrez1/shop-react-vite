@@ -48,10 +48,15 @@ export function EcommerceProvider({children}){
 
         const productsToShow=(var1.filter((product)=>(product.title.toLowerCase().includes(searchTerm.toLowerCase()))))
         /* login functionality */
-        const [logged,setlogged]=useState(true)
+        const [logged,setLogged]=useState(()=>{
+            return JSON.parse(localStorage.getItem('logged')) || false
+        })
+
+        ///////////////
         function checkLogin(e,props){
+            debugger
             e.stopPropagation()
-            if (logged){
+            if (logged===true){
                 addToCart(props)
             } else{
                 setSignIn(true)
@@ -98,7 +103,7 @@ export function EcommerceProvider({children}){
                 signIn,
                 setSignIn,
                 logged,
-                setlogged,
+                setLogged,
                 addNewUser,
                 users,
                 checker,
