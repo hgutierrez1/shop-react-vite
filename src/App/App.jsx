@@ -10,6 +10,7 @@ import ShoppingCart from '../Components/ShoppingCart/shoppingcart'
 import NotFound from '../Pages/NotFound/notfound'
 import BlockPage from '../Components/BlockPage/blockpage'
 import LoginCheck from '../Components/LoginCheck/logincheck'
+import MyOrder from '../Pages/MyOrder/myorder'
 import './App.css'
 
 
@@ -23,6 +24,7 @@ function Routes(){
     {path:'/sign-up',element:<SignUp/>},
     {path:'/order',element:<Order/>},
     {path:'/my-orders',element:<MyOrders/>},
+    {path:'/my-order',element:<MyOrder/>},
     {path:'/',element:<MainPage/>},
     {path:'/*',element:<NotFound/>},
   ])

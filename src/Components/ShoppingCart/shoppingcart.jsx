@@ -2,6 +2,8 @@ import { useContext } from "react"
 import OrderCard from "../OrderCard/ordercard"
 import { Ecommerce } from "../Context/context"
 import { v4 as uuidv4 } from 'uuid'
+import { NavLink } from "react-router-dom"
+
 
 
 
@@ -47,9 +49,9 @@ function Shoppingcart(){
               <span className="font-thin text-xl">TOTAL</span>
               <span className="font-bold text-xl pr-2">${context.totalPrice()}</span>
             </div>
-            <button className="w-4/5 bg-black border-2 border-black rounded-lg text-white py-2 mt-6 self-center justify-end">
+            <NavLink to={`${context.cart.length>0?'/my-order':''}`} className="w-4/5 bg-black border-2 border-black rounded-lg text-white py-2 mt-6 self-center text-center">
                 Checkout
-            </button>
+            </NavLink>
         </aside>
        
     )
