@@ -3,15 +3,18 @@ import { Ecommerce } from "../../Components/Context/context"
 import OrderCard from "../../Components/OrderCard/ordercard"
 import { v4 as uuidv4 } from 'uuid'
 
-function toMyOrders(){
-    alert('Someday,I will add a full clone of the payment procedure,with card identification and all the stuff. For now,just pretend you paid the products and go to your shopping history')
-    window.location.assign("/my-orders")
-}
 
 
 function MyOrder(){
 
     const context=useContext(Ecommerce)
+
+    function toMyOrders(){
+    
+        alert('Someday,I will add a full clone of the payment procedure,with card identification and all the stuff. For now,just pretend you paid the products and go to your shopping history')
+        context.addtoShopHistory(context.cart)
+        window.location.assign("/my-orders")
+    }
 
     return(
             <section className="grid place-items-center w-full h-screen">

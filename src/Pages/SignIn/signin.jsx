@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { Ecommerce } from "../../Components/Context/context"
 
-
 function SignIn(){
   const context=useContext(Ecommerce)
 
@@ -22,6 +21,7 @@ function SignIn(){
       window.location.assign("/sign-in") 
     } else{
       localStorage.setItem('logged','true')
+      context.addLoggedId(test[0].id)
       window.location.assign("/")
       
     }

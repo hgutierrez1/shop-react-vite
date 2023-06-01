@@ -9,6 +9,35 @@ export function EcommerceProvider({children}){
     const [isCategoriesOpen,setIsCategoriesOpen]=useState(true)
     /* add to cart functionality */
     const [cart,setCart]=useState([])
+    /* add shopping history */
+    const [shophistory,setShophistory]=useState(()=>{
+        return JSON.parse(localStorage.getItem('shophistory')) || []
+    })
+    const id=localStorage.getItem('id')
+
+    function addtoShopHistory(cartlist){
+        const user=users.find(us=>us.id===id)
+        user.orders.push(cartlist)
+        localStorage.setItem('users',JSON.stringify(users))
+    }
+    /* get resume for history entry */
+        function getResumeForMyOrders(){
+            const user=users.find(us=>us.id===id)
+            
+            const ordersresume= user.orders.map((userorder)=>{
+                const tprice=userorder.reduce((a,b)=>a+b.price,0)
+                const date=new Date()
+                const regencard=userorder
+                const datevalue=date.getFullYear()+'.'+date.getMonth()+'.'+date.getDate()
+                return({
+                    price:tprice,
+                    date:datevalue,
+                    numproducts:userorder.length,
+                    regencard:regencard
+                })
+           })
+           return ordersresume
+        }
     /* total prices from cart */
     function totalPrice(){
         const total=cart.reduce((a,b)=>a+b.price,0)
@@ -56,10 +85,11 @@ export function EcommerceProvider({children}){
         const [logged,setLogged]=useState(()=>{
             return JSON.parse(localStorage.getItem('logged')) || false
         })
-
+        function addLoggedId(id){
+            localStorage.setItem('id',id)
+        }
         ///////////////
         function checkLogin(e,props){
-            debugger
             e.stopPropagation()
             if (logged===true){
                 addToCart(props)
@@ -116,7 +146,10 @@ export function EcommerceProvider({children}){
                 pmatch,
                 setPmatch,
                 totalPrice,
-
+                shophistory,
+                addLoggedId,
+                addtoShopHistory,
+                getResumeForMyOrders,
             }}
         >
 
