@@ -18,11 +18,11 @@ function SignIn(){
     
     if (test.length<1){
       alert("Usuario o clave incorrectos")
-      window.location.assign("/sign-in") 
+      location.href='/sign-in' 
     } else{
       localStorage.setItem('logged','true')
       context.addLoggedId(test[0].id)
-      window.location.assign("/")   
+      location.href='/' 
     }
   }
   const renderView=()=>{
