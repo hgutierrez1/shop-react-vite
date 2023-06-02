@@ -27,11 +27,9 @@ function SignUp(){
     const submit=document.querySelector('#submit')
     debugger
     if(pw===rpw){
-      console.log('matching')
       submit.disabled=false
       context.setPmatch(true)
     }else{
-      console.log('not matching')
       submit.disabled=true
       context.setPmatch(false)
     } 

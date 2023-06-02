@@ -10,11 +10,11 @@ function SignIn(){
     const userFormData=new FormData(e.target)
     const user={}
     userFormData.forEach((value, key) => (user[key] = value));
-    console.log(user)
     const test=context.users.filter((us)=>{
       return(
       us.name===user.name && us.password===user.password)
     })
+  
     
     if (test.length<1){
       alert("Usuario o clave incorrectos")

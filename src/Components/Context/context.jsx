@@ -17,7 +17,6 @@ export function EcommerceProvider({children}){
     const id=localStorage.getItem('id')
 
     function addtoShopHistory(cartlist){
-        console.log(id)
         const user=users.find(us=>us.id==id)
         user.orders.push(cartlist)
         localStorage.setItem('users',JSON.stringify(users))
@@ -100,7 +99,6 @@ export function EcommerceProvider({children}){
                 addToCart(props)
             } else{
                 setSignIn(true)
-                console.log('block working')
             }
         }
 

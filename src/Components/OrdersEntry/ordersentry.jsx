@@ -7,7 +7,6 @@ import { Ecommerce } from "../Context/context"
 
 function OrdersEntry(props){
     const context=useContext(Ecommerce)
-    console.log(props.regencard)
     return(
         <NavLink  onClick={()=>context.setCart(props.regencard)} to='/my-order' className="flex justify-between w-full items-center border-2 rounded-xl py-2 px-4">
             <p className="w-full h-auto font-light max-[440px]:text-sm">{props.date}</p>
