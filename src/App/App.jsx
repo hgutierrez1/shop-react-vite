@@ -12,6 +12,8 @@ import BlockPage from '../Components/BlockPage/blockpage'
 import LoginCheck from '../Components/LoginCheck/logincheck'
 import MyOrder from '../Pages/MyOrder/myorder'
 import './App.css'
+import MyAccount from '../Pages/MyAccount/myaccount'
+import DeleteCheck from '../Components/DeleteCheck/deletecheck'
 
 
 function Routes(){
@@ -25,6 +27,7 @@ function Routes(){
     {path:'/order',element:<Order/>},
     {path:'/my-orders',element:<MyOrders/>},
     {path:'/my-order',element:<MyOrder/>},
+    {path:'/my-account',element:<MyAccount/>},
     {path:'/',element:<MainPage/>},
     {path:'/*',element:<NotFound/>},
   ])
@@ -45,6 +48,7 @@ function App() {
         <ShoppingCart/>
           <BlockPage> 
             <LoginCheck/>
+            <DeleteCheck/>
           </BlockPage>
       </BrowserRouter>
     </EcommerceProvider>

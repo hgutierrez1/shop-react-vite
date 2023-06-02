@@ -6,7 +6,25 @@ import { v4 as uuidv4 } from 'uuid'
 
 function MyOrders(){
     const context=useContext(Ecommerce)
-    debugger
+    const renderView=()=>{
+        if(context.logged===true){
+            return(
+                context.getResumeForMyOrders()?.map((resume)=>(
+                    <OrdersEntry
+                    key={uuidv4()}
+                    price={resume.price}
+                    date={resume.date}
+                    numproducts={resume.numproducts}
+                    regencard={resume.regencard}
+                    />
+                ))
+            )
+          }else{
+            return(
+              <div className="font-thin text-md">You need to sign in to see your shopping history</div>
+            )
+          }   
+      }
     return(
         <>
         <main className="grid place-items-center w-screen h-screen">
@@ -14,15 +32,7 @@ function MyOrders(){
                 <h2 className="font-bold text-2xl text-center">My Orders</h2>
                 
                     {
-                        context.getResumeForMyOrders().map((resume)=>(
-                            <OrdersEntry
-                            key={uuidv4()}
-                            price={resume.price}
-                            date={resume.date}
-                            numproducts={resume.numproducts}
-                            regencard={resume.regencard}
-                            />
-                        ))
+                        renderView()
                     }
                 
             </div>

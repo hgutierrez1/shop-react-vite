@@ -22,14 +22,13 @@ function SignIn(){
     } else{
       localStorage.setItem('logged','true')
       context.addLoggedId(test[0].id)
-      window.location.assign("/")
-      
+      window.location.assign("/")   
     }
-
   }
-    return(
-        <>
-        <div className="grid place-content-center w-screen h-screen gap-6">
+  const renderView=()=>{
+    if(context.logged===false){
+        return(
+          <div className="grid place-content-center w-screen h-screen gap-6">
             <h2 className="text-center font-bold text-2xl"> Sign In</h2>
             <form onSubmit={(e)=>checkUser(e)}>
                   <p className="flex flex-col">
@@ -45,11 +44,19 @@ function SignIn(){
                     <div className="flex items-center pt-5 gap-2">
                         <span className="inline-block">Don't have an account?</span><NavLink className="hover:underline"to='/sign-up'> Sign Up</NavLink> 
                     </div>
-                  </div>
-
-                  
+                  </div>  
             </form>
         </div>
+        )
+      }else{
+        return(
+          <div className="font-thin text-md top-2/4 absolute right-2/4">You have already logged in!</div>
+        )
+      }   
+  }
+    return(
+        <>
+          {renderView()}
         </>
     )
 }

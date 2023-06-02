@@ -27,6 +27,7 @@ function Navbar(){
     const categories=['Clothes','Electronics','Furniture','Toys','Others']
     const otherpages=['My Orders','My Account','Sign In']
     const context=useContext(Ecommerce)
+    
     return(
         <>
         <div className="absolute top-0 z-50 flex border-b-2 justify-between items-center bg-white w-full p-4 sm:justify-end">
@@ -59,7 +60,9 @@ function Navbar(){
                 {GenerateNavbar(categories)}
             </ul>
             <ul className="list-none flex flex-col justify-evenly sm:flex-row sm:justify-evenly sm:w-auto sm:gap-2">
-                {GenerateNavbar(otherpages)}
+                
+                    {GenerateNavbar(otherpages)}
+                
             </ul>
         </nav>
         </>

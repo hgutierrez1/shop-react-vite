@@ -13,10 +13,12 @@ export function EcommerceProvider({children}){
     const [shophistory,setShophistory]=useState(()=>{
         return JSON.parse(localStorage.getItem('shophistory')) || []
     })
+
     const id=localStorage.getItem('id')
 
     function addtoShopHistory(cartlist){
-        const user=users.find(us=>us.id===id)
+        console.log(id)
+        const user=users.find(us=>us.id==id)
         user.orders.push(cartlist)
         localStorage.setItem('users',JSON.stringify(users))
     }
@@ -24,19 +26,22 @@ export function EcommerceProvider({children}){
         function getResumeForMyOrders(){
             const user=users.find(us=>us.id===id)
             
-            const ordersresume= user.orders.map((userorder)=>{
-                const tprice=userorder.reduce((a,b)=>a+b.price,0)
-                const date=new Date()
-                const regencard=userorder
-                const datevalue=date.getFullYear()+'.'+date.getMonth()+'.'+date.getDate()
-                return({
-                    price:tprice,
-                    date:datevalue,
-                    numproducts:userorder.length,
-                    regencard:regencard
-                })
-           })
-           return ordersresume
+            if (user){
+                const ordersresume= user.orders.map((userorder)=>{
+                    const tprice=userorder.reduce((a,b)=>a+b.price,0)
+                    const date=new Date()
+                    const regencard=userorder
+                    const datevalue=date.getFullYear()+'.'+date.getMonth()+'.'+date.getDate()
+                    return({
+                        price:tprice,
+                        date:datevalue,
+                        numproducts:userorder.length,
+                        regencard:regencard
+                    })
+               })
+               return ordersresume
+            }
+
         }
     /* total prices from cart */
     function totalPrice(){
@@ -150,6 +155,7 @@ export function EcommerceProvider({children}){
                 addLoggedId,
                 addtoShopHistory,
                 getResumeForMyOrders,
+                id
             }}
         >
 
