@@ -2,18 +2,22 @@ import { useContext } from "react"
 import { Ecommerce } from "../../Components/Context/context"
 import OrderCard from "../../Components/OrderCard/ordercard"
 import { v4 as uuidv4 } from 'uuid'
+import { Navigate, useNavigate } from "react-router-dom"
+
 
 
 
 function MyOrder(){
 
     const context=useContext(Ecommerce)
+    const navigate=useNavigate()
 
     function toMyOrders(){
     
         alert('Someday,I will add a full clone of the payment procedure,with card identification and all the stuff. For now,just pretend you paid the products and go to your shopping history')
         context.addtoShopHistory(context.cart)
-        window.location.assign("/my-orders")
+        navigate('/my-orders')
+        /* window.location.assign("/my-orders") */
     }
 
     return(

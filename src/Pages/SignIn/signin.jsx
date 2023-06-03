@@ -1,9 +1,12 @@
-import { NavLink } from "react-router-dom"
+import { Link,redirect,useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { Ecommerce } from "../../Components/Context/context"
 
+
+
 function SignIn(){
   const context=useContext(Ecommerce)
+  const navigate=useNavigate()
 
   function checkUser(e){
     e.preventDefault()
@@ -18,11 +21,15 @@ function SignIn(){
     
     if (test.length<1){
       alert("Usuario o clave incorrectos")
-      location.href='/sign-in' 
+      navigate('/sign-in')
+      /* location.href='/sign-in'  */
     } else{
+      debugger
       localStorage.setItem('logged','true')
       context.addLoggedId(test[0].id)
-      location.href='/' 
+      navigate('/')
+      navigate(0)
+      /* location.href='/'  */
     }
   }
   const renderView=()=>{
@@ -42,7 +49,7 @@ function SignIn(){
                   <div className="flex flex-col">
                     <button type="submit" className="bg-black text-white p-4 rounded-lg">Access</button>
                     <div className="flex items-center pt-5 gap-2">
-                        <span className="inline-block">Don't have an account?</span><NavLink className="hover:underline"to='/sign-up'> Sign Up</NavLink> 
+                        <span className="inline-block">Don't have an account?</span><Link className="hover:underline"to='/sign-up'> Sign Up</Link> 
                     </div>
                   </div>  
             </form>

@@ -1,10 +1,12 @@
 import { useContext } from "react"
 import { Ecommerce } from "../../Components/Context/context"
-import { NavLink } from "react-router-dom"
+import { NavLink, Navigate, useNavigate } from "react-router-dom"
+
 
 
 function MyAccount(){
     const context=useContext(Ecommerce)
+    const navigate=useNavigate()
     function getdetails(){
         const id=context.id
         const user=context.users.filter((us)=>us.id===id)
@@ -14,7 +16,9 @@ function MyAccount(){
         localStorage.removeItem('id')
         localStorage.removeItem('logged')
         alert('You have succesfully logged out')
-        location.href='/'
+        navigate('/')
+        navigate(0)
+        /* location.href='/' */
     }
     function DeleteAccount(){{
         context.setSignIn(true)
@@ -22,7 +26,6 @@ function MyAccount(){
     const renderView=()=>{
         if(context.logged===true){
             const user=getdetails()[0]
-            debugger
             return(
                 <main className="top-4 absolute flex flex-col justify-evenly w-screen items-center h-screen ">
                     <div className="flex gap-2 text-2xl">

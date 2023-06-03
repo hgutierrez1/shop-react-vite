@@ -1,12 +1,13 @@
-import { NavLink } from "react-router-dom"
-import { useContext, useEffect, useState } from "react"
+import { Link,useNavigate } from "react-router-dom"
+import { useContext} from "react"
 import { v4 as uuidv4 } from 'uuid'
 import { Ecommerce } from "../../Components/Context/context"
 
 
 
 function SignUp(){
-  const submit=document.querySelector('#submit')
+  
+  const navigate = useNavigate()
 
   const context=useContext(Ecommerce)
 
@@ -18,14 +19,16 @@ function SignUp(){
     newuser.orders=[]
     newuser.id=uuidv4()
     context.addNewUser(newuser)
-    location.href='/sign-in'
+    navigate('/sign-in')
+
+/* 
+    location.href='/sign-in' */
   }
 
   function pchecker(){
     let pw=document.querySelector('#size2').value
     let rpw=document.querySelector('#size3').value
     const submit=document.querySelector('#submit')
-    debugger
     if(pw===rpw){
       submit.disabled=false
       context.setPmatch(true)
@@ -68,7 +71,7 @@ function SignUp(){
                   <div className="flex flex-col">
                     <button id='submit' disabled type="submit" className="bg-black text-white p-4 rounded-lg">Create Account</button>
                     <div className="flex items-center pt-5 gap-2">
-                        <span className="inline-block">Alredy have an account?</span><NavLink className="hover:underline"to='/sign-in'> Sign In</NavLink> 
+                        <span className="inline-block">Alredy have an account?</span><Link className="hover:underline"to='/sign-in'> Sign In</Link> 
                     </div>
                   </div>
 
