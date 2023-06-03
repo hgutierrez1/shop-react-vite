@@ -18,8 +18,9 @@ function DeleteCheck(){
         localStorage.removeItem('id')
         localStorage.removeItem('logged')
         alert('Your account has been deleted')
-        navigate(0)
         navigate('/')
+        navigate(0)
+        
         
         /* location.href='/' */
         context.setSignIn(false)
