@@ -16,8 +16,9 @@ function MyAccount(){
         localStorage.removeItem('id')
         localStorage.removeItem('logged')
         alert('You have succesfully logged out')
-        navigate('/')
         navigate(0)
+        navigate('/')
+        
         /* location.href='/' */
     }
     function DeleteAccount(){{

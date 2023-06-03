@@ -27,8 +27,9 @@ function SignIn(){
       debugger
       localStorage.setItem('logged','true')
       context.addLoggedId(test[0].id)
-      navigate('/')
       navigate(0)
+      navigate('/')
+      
       /* location.href='/'  */
     }
   }
