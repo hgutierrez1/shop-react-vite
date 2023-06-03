@@ -16,8 +16,8 @@ function MyAccount(){
         localStorage.removeItem('id')
         localStorage.removeItem('logged')
         alert('You have succesfully logged out')
-        navigate(0)
         navigate('/')
+        navigate(0)
         
         /* location.href='/' */
     }
